@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef  } from "react";
 import io from "socket.io-client";
+import { Link } from "react-router-dom";
 import "./Header.css";
 import "./Body.css";
 import axios from "axios";
@@ -83,7 +84,7 @@ function Messages() {
   return (
     <div className="container2">
       <header>
-        <div className="logo">
+      <div className="logo">
           <img
             className="imagelogo"
             src="./Images/icons8-legal-64 (2).png"
@@ -95,15 +96,19 @@ function Messages() {
         </div>
         <nav>
           <ul>
-            <li>Home</li>
-            <li>Messages</li>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/messages">Messages</Link>
+            </li>
             <li>Articles</li>
             <li>Category</li>
           </ul>
         </nav>
         <div className="buttons">
-          <button className="login">{userName}</button>
-          <button className="profile">Create profile</button>
+          <button className="login"><Link to="/signup">{userName}</Link></button>
+          <button className="profile"><Link to="/Formpage">Create profile</Link></button>
         </div>
       </header>
 

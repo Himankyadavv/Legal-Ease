@@ -76,7 +76,7 @@ li {
     white-space: nowrap;
 }
 
-.login, .profile {
+.buttons.login, .buttons.profile {
     height: 40px;
     padding: 0.5em 1em;
     border-radius: 2em;
@@ -85,18 +85,18 @@ li {
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.login {
+.buttons.login {
     background-color: white;
     border: 1px solid black;
 }
 
-.profile {
+.buttons.profile {
     background-color: #28BF69;
     border: 1px solid #28BF69;
     color: white;
 }
 
-.login:hover, .profile:hover {
+.buttons.login:hover, .buttons.profile:hover {
     transform: scale(1.05);
 }
 
@@ -139,3 +139,16 @@ li {
         font-size: 0.8rem; /* Adjust font size */
     }
 }
+nav ul li a {
+    text-decoration: none; /* Removes the underline */
+    color: inherit; /* Inherits the color from the parent element */
+    font-weight: bold; /* Makes the text bold (optional) */
+    padding: 10px; /* Adds some padding */
+    transition: color 0.3s ease; /* Adds a transition effect */
+  }
+  
+  /* Hover effect for the links */
+  nav ul li a:hover {
+    color: #007bff; /* Changes the color on hover */
+    text-decoration: underline; /* Optionally, add an underline on hover */
+  }

@@ -21,6 +21,10 @@ function Signup() {
     setFormData({ ...formData, [name]: value });
   };
 
+  const handlesigninchange = () =>{
+    navigate("/signin")
+  }
+
   // Function to handle form submission
   const handleSignup = async (e) => {
     e.preventDefault();
@@ -38,7 +42,7 @@ function Signup() {
       if (response.data.msg === 'User registered successfully') {
         setSuccess("Signup successful! Redirecting to messages...");
         localStorage.setItem("userName", formData.name);
-        setTimeout(() => navigate("/messages"), 2000); // Redirect after success
+        setTimeout(() => navigate("/"), 1000); // Redirect after success
       } else {
         setError(response.data.errors[0].msg || "Signup failed. Please try again.");
       }
@@ -68,11 +72,11 @@ function Signup() {
           {/* Input fields for signup */}
           <div className="name">
             <p id="p1">Your Name</p>
-            <input id="input1" type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Name" required />
+            <input autoComplete="off" id="input1" type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Name" required />
           </div>
           <div className="email">
             <p id="p2">Email</p>
-            <input id="input2" type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email" required />
+            <input autoComplete="off" id="input2" type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email" required />
           </div>
           <div className="password">
             <p id="p3">Password</p>
@@ -80,7 +84,7 @@ function Signup() {
           </div>
           <div className="confirm">
             <p id="p4">Confirm password</p>
-            <input id="input4" type="password" name="confirmPassword" value={formData.confirmPassword} onChange={handleChange} placeholder="Confirm password" required />
+            <input id="input4" type="password" autoComplete="off" name="confirmPassword" value={formData.confirmPassword} onChange={handleChange} placeholder="Confirm password" required />
           </div>
           
           {/* Display error or success messages */}
@@ -96,7 +100,7 @@ function Signup() {
           <div className="line"></div>
         </div>
         
-        <button className="google">Sign in with Google</button>
+        <button className="google" onClick={handlesigninchange}>Sign in with Google</button>
       </div>
     </div>
   );

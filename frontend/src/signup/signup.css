@@ -266,28 +266,6 @@ form {
     }
 }
 
-input[type="text"], input[type="password"] {
-    width: 100%;
-    border-radius: 10px;
-    border: 1px solid #1C7034;
-    background-color: #EDF5ED;
-    height: 30px;
-    padding-left: 10px;
-    transition: all 0.3s ease; 
-}
-
-
-input[type="text"]:focus, input[type="password"]:focus {
-    outline: none;
-    border-color: #2B6745; 
-    box-shadow: 0 0 5px 2px rgba(43, 103, 69, 0.3); 
-    background-color: #ffffff; 
-}
-
-input[type="text"]::placeholder, input[type="password"]::placeholder {
-    color: #9E9E9E; 
-    font-style: normal;
-}
 
 
 .submit, .google {
@@ -369,9 +347,10 @@ input[type="text"]::placeholder, input[type="password"]::placeholder {
   }
 
   /* Global style for all input fields */
-input[type="text"], 
-input[type="email"], 
-input[type="password"] {
+.input1, 
+.input2, 
+.input3,
+.input4 {
     width: 100%;
     border-radius: 10px;
     border: 1px solid #1C7034;
@@ -382,18 +361,20 @@ input[type="password"] {
     transition: all 0.3s ease; 
 }
 
-input[type="text"]:focus, 
-input[type="email"]:focus, 
-input[type="password"]:focus {
+.input1:focus, 
+.input2:focus, 
+.input3:focus,
+.input4:focus {
     outline: none;
     border-color: #2B6745; 
     box-shadow: 0 0 5px 2px rgba(43, 103, 69, 0.3); 
     background-color: #ffffff; 
 }
 
-input[type="text"]::placeholder, 
-input[type="email"]::placeholder, 
-input[type="password"]::placeholder {
+.input1::placeholder, 
+.input2::placeholder, 
+.input3::placeholder,
+.input4::placeholder {
     color: #9E9E9E; 
     font-style: normal;
 }
