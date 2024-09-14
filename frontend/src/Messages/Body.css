@@ -164,7 +164,8 @@
 
 .chatsection {
     display: flex;
-    flex-direction: column; /* Reverse column order to place the latest message at the bottom */
+    flex-direction: column; 
+    /* Reverse column order to place the latest message at the bottom */
      /* Set a fixed height for the chat container */
     overflow-y: scroll; /* Enables vertical scrolling */
      /* Smooth scrolling effect */
@@ -187,7 +188,7 @@
     background-color: #DCF8C6; /* WhatsApp-like color */
     border-radius: 15px 0 15px 15px;
     padding: 0.5rem 1rem;
-    max-width: 60%;
+    max-width: 80%;
     word-wrap: break-word;
 }
 
@@ -195,6 +196,11 @@
     background-color: #ffffff;
     border-radius: 0 15px 15px 15px;
     padding: 0.5rem 1rem;
-    max-width: 60%;
+    max-width: 80%;
     word-wrap: break-word;
+    
+}
+
+.messages {
+  background-color: #EDF5ED ;
 }

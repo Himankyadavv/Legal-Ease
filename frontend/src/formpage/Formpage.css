@@ -55,7 +55,7 @@ h1 {
 }
 
 /* Textarea Styles */
-textarea {
+.experiencebox, .aboutmebox {
     resize: vertical;
     height: 100px;
 }

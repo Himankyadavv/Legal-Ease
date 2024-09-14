@@ -75,5 +75,19 @@ app.post('/api/saveUserData', async (req, res) => {
   });
   
 
+  app.get('/api/getUserProfile/:id', async (req, res) => {
+    try {
+      const { id } = req.params;
+      const userProfile = await ProfileData.findById(id); // Find user by ID
+      if (!userProfile) {
+        return res.status(404).json({ message: 'Profile not found' });
+      }
+      res.status(200).json(userProfile); // Send profile data
+    } catch (error) {
+      console.error('Error fetching profile:', error);
+      res.status(500).send('Internal Server Error');
+    }
+  });
+
   const PORT = process.env.PORT || 2000;
   app.listen(PORT, () => console.log(`Server running on port ${PORT}`))

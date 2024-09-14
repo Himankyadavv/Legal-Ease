@@ -21,7 +21,7 @@ function Messages() {
 
     const fetchCurrentUser = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/api/currentuser/${storeName}`);
+        const response = await axios.get(`http://localhost:3000/api/${storeName}`);
         setCurrentUser(response.data);
       } catch (error) {
         console.error("Error fetching current user:", error);

@@ -8,6 +8,7 @@ import Home from './Home/Home';
 import Formpage from './formpage/Formpage';
 import MultipleProfile from './MultipleProfile/MultipleProfile';
 import ProfileShowing from './ProfileShowing/ProfileShowing';
+import Verify from './formpage/verify';
 
 function App() {
   return (
@@ -20,7 +21,8 @@ function App() {
         <Route path="/messages" element={<Messages />} />
         <Route path="/Formpage" element={<Formpage />} />
         <Route path="/MultipleProfile" element = {<MultipleProfile />}></Route>
-        <Route path="/Profile" element = {<ProfileShowing />} />
+        <Route path="/profile/:id" element={<ProfileShowing />} />
+        <Route path="/Verify" element={<Verify></Verify>} />
         {/* You can add other routes like Signin if needed */}
         
       </Routes>

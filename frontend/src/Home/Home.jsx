@@ -12,7 +12,7 @@ function Home() {
 
   useEffect(() => {
     const storeName = localStorage.getItem("userName");
-    setUserName(storeName || "guest");
+    setUserName(storeName || "login/signup");
   }, []);
 
   const handleSearch = async () => {
@@ -58,7 +58,7 @@ function Home() {
         </nav>
         <div className="buttons">
           <button className="login"><Link to="/signup">{userName}</Link></button>
-          <button className="profile"><Link to="/Formpage">Create profile</Link></button>
+          <button className="profile"><Link to="/Verify">Create profile</Link></button>
         </div>
       </header>
 

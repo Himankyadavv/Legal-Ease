@@ -3,9 +3,16 @@ const http = require('http');
 const mongoose = require('mongoose');
 const socketIo = require('socket.io');
 const cors = require('cors');
-require('dotenv').config();
+
+
+
+
+const dotenv = require('dotenv');
+
 
 const Message = require('./model.js');
+
+dotenv.config();
 
 // Initialize Express and create HTTP server
 const app = express();
@@ -44,6 +51,8 @@ io.on('connection', (socket) => {
         console.log('a user disconnected');
     });
 });
+
+
 
 // Server listening
 const PORT = process.env.PORT || 5000;

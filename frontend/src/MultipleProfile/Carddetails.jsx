@@ -1,13 +1,21 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Carddetails({ detail }) {
+
+  const navigate = useNavigate(); // Initialize the useNavigate hook
+
+  // Function to handle card click and redirect to the profile page
+  const handleProfileClick = () => {
+    navigate(`/profile/${detail._id}`); // Redirect to the profile page using the profile ID
+  };
   return (
     <div
       style={{
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-evenly",
-      }}
+      }}  onClick={handleProfileClick}
     >
       <div style={{ fontSize: "20px", paddingBottom: "5px" }}>
         <b>{detail.firstname} {detail.lastname}</b>

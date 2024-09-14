@@ -119,7 +119,7 @@ app.get('/api/users/:username', async (req, res) => {
 });
 
 // Fetch Current User
-app.get('/api/currentuser/:username', async (req, res) => {
+app.get('/api/:username', async (req, res) => {
   const { username } = req.params;
 
   try {
@@ -128,6 +128,7 @@ app.get('/api/currentuser/:username', async (req, res) => {
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
+    
 
     res.json(user);
   } catch (err) {
@@ -139,3 +140,5 @@ app.get('/api/currentuser/:username', async (req, res) => {
 // Start server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+
+module.exports = User
