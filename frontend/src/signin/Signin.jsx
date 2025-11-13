@@ -36,7 +36,7 @@ function Signin() {
       navigate("/");
     } catch (err) {
       console.log(err);
-      setError(err.response?.data?.errors?.[0]?.msg || "Invalid email or password");
+      setError(err.response?.data?.errors?.[0]?.msg || "Invalid email or password");  
     }
   };
 

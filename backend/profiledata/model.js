@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 const { stringify } = require("querystring")
 
-mongoose.connect('mongodb+srv://Himank:Himank123@cluster-0.tbaskcb.mongodb.net/legalease')
+// mongoose.connect('mongodb+srv://Himank:Himank123@cluster-0.tbaskcb.mongodb.net/legalease')
 
 const ProfileDataSchema = new mongoose.Schema({
     firstname: {type: String, required: true},
