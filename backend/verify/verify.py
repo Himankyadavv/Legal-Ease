@@ -1,9 +1,10 @@
 import sys
+import time
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
-import time
-
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 
 phone_no = sys.argv[1] 
 first_letter_name = sys.argv[2]
@@ -28,13 +29,17 @@ if (phone_no == fake_details["phone_no"] and
     print("Successful Verification")
     sys.exit(0)
 
-# Configure Chrome for headless/Docker environment
 chrome_options = Options()
-chrome_options.add_argument("--headless")
+chrome_options.add_argument("--headless=new")   # use new headless if available
 chrome_options.add_argument("--no-sandbox")
 chrome_options.add_argument("--disable-dev-shm-usage")
+chrome_options.add_argument("--disable-gpu")
+chrome_options.add_argument("--disable-extensions")
+chrome_options.add_argument("--window-size=1366,768")
 
-driver = webdriver.Chrome(options=chrome_options)
+# Use webdriver-manager to install compatible chromedriver at runtime
+service = Service(ChromeDriverManager().install())
+driver = webdriver.Chrome(service=service, options=chrome_options)
 
 try:
     driver.get("https://barcouncilofrajasthan.org/enrolment/status")

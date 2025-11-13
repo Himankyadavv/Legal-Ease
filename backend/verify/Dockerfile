@@ -1,32 +1,48 @@
-FROM node:22
+# Dockerfile (venv-based, recommended)
+FROM node:22-slim
 
 WORKDIR /app
 
-# Install Python, pip, build tools, and Chrome
-RUN apt-get update && apt-get install -y \
+# Install system packages needed for Python and Chromium
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ca-certificates \
     python3 \
-    python3-pip \
-    python3-dev \
+    python3-venv \
+    python3-distutils \
     build-essential \
     wget \
     curl \
-    chromium-browser \
-    chromium-chromedriver \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+    unzip \
+    fonts-liberation \
+    libnss3 \
+    libx11-6 \
+    libx11-xcb1 \
+    libxcomposite1 \
+    libxcursor1 \
+    libxdamage1 \
+    libxrandr2 \
+    libgbm1 \
+    libasound2 \
+    libatk1.0-0 \
+    libcups2 \
+    chromium \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Upgrade pip
-RUN pip3 install --upgrade pip setuptools wheel
+# Create a virtual environment and add it to PATH
+RUN python3 -m venv /opt/venv
+ENV PATH="/opt/venv/bin:$PATH"
 
-# Copy application files
+# Upgrade pip inside the venv and install Python deps
+RUN python -m pip install --upgrade pip setuptools wheel
+RUN python -m pip install --no-cache-dir selenium==4.15.2 webdriver-manager
+
+# Node deps
+COPY package*.json ./
+RUN npm install --production
+
+# App files
 COPY . .
 
-# Install Node dependencies
-RUN npm install
-
-# Install Python dependencies
-RUN pip3 install --no-cache-dir selenium
-
 EXPOSE 3001
-
 CMD ["node", "index.js"]
+
