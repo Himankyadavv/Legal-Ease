@@ -23,7 +23,7 @@ function Verify() {
 
     try {
       // Send verification data to the backend
-      const verificationResponse = await fetch("http://localhost:3001/verify", {
+      const verificationResponse = await fetch("https://legal-ease-1-verifyy.onrender.com/verify", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

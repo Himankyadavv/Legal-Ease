@@ -17,7 +17,7 @@ function Home() {
 
   const handleSearch = async () => {
     try {
-      const response = await fetch(`http://localhost:2000/api/searchUser?caseCategory=${searchCategory}&name=${searchName}`);
+      const response = await fetch(`https://legalease-profiledataa.onrender.com/api/searchUser?caseCategory=${searchCategory}&name=${searchName}`);
       const result = await response.json();
       if (result.length > 0) {
         // Store search results in localStorage or pass to the next page

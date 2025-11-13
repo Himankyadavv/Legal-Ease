@@ -21,7 +21,7 @@ function ProfileShowing() {
 
       
       try {
-        const response = await fetch(`http://localhost:2000/api/getUserProfile/${id}`);
+        const response = await fetch(`https://legalease-profiledataa.onrender.com/api/getUserProfile/${id}`);
         const data = await response.json();
         setProfile(data);
         setLoading(false);

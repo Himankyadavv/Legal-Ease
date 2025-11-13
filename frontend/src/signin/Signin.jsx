@@ -21,7 +21,7 @@ function Signin() {
 
     try {
       // Use POST request instead of GET
-      const response = await axios.post("http://localhost:3002/api/signin", {
+      const response = await axios.post("https://legal-ease-data.onrender.com/api/signin", {
         email: formData.email,
         password: formData.password,
       });

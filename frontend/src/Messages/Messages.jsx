@@ -6,7 +6,7 @@ import "./Body.css";
 import axios from "axios";
 
 // Initialize Socket.IO client
-const socket = io("http://localhost:5000");
+const socket = io("https://legal-ease-dgry.onrender.com");
 
 function Messages() {
   const [messages, setMessages] = useState([]);
@@ -22,7 +22,7 @@ function Messages() {
 
     const fetchCurrentUser = async () => {
       try {
-        const response = await axios.get(`http://localhost:3002/api/${storeName}`);
+        const response = await axios.get(`https://legal-ease-data.onrender.com/api/${storeName}`);
         setCurrentUser(response.data);
       } catch (error) {
         console.error("Error fetching current user:", error);
@@ -55,7 +55,7 @@ function Messages() {
 
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/chat/api/messages/${currentUser._id}/${user._id}`
+        `https://legal-ease-dgry.onrender.com/api/chat/api/messages/${currentUser._id}/${user._id}`
       );
       setMessages(response.data);
     } catch (error) {
@@ -167,7 +167,7 @@ function ChatsContainer({ onSelectUser, currentUser }) {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get(`http://localhost:3002/api/users/${username}`);
+        const response = await axios.get(`https://legal-ease-data.onrender.com/api/users/${username}`);
         setUsers(response.data);
       } catch (error) {
         console.error("Error fetching users:", error);
