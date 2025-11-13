@@ -3,8 +3,7 @@ const { exec } = require('child_process');
 const app = express();
 const port = 3001;
 const cors = require('cors');
-app.use(cors());
-
+app.use(cors({ origin: 'https://legal-ease-ebon.vercel.app' }));
 app.use(express.json());
 
 app.post('/verify', (req, res) => {

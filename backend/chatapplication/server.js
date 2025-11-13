@@ -17,7 +17,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
     cors: {
-        origin: '*',
+        origin: 'https://legal-ease-ebon.vercel.app',
         methods: ['GET', 'POST']
     }
 });
