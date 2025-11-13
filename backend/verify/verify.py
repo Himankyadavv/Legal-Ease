@@ -1,6 +1,6 @@
 import sys
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 import time
 
@@ -25,37 +25,39 @@ if (phone_no == fake_details["phone_no"] and
     dob_date == fake_details["dob_date"] and 
     dob_month == fake_details["dob_month"] and 
     dob_year == fake_details["dob_year"]):
-    
-    
     print("Successful Verification")
     sys.exit(0)
 
+# Configure Chrome for headless/Docker environment
+chrome_options = Options()
+chrome_options.add_argument("--headless")
+chrome_options.add_argument("--no-sandbox")
+chrome_options.add_argument("--disable-dev-shm-usage")
 
-driver_path = 'D:\\chromedriver-win64\\chromedriver.exe'
-service = Service(driver_path)
-driver = webdriver.Chrome(service=service)
+driver = webdriver.Chrome(options=chrome_options)
 
-driver.get("https://barcouncilofrajasthan.org/enrolment/status")
+try:
+    driver.get("https://barcouncilofrajasthan.org/enrolment/status")
+    time.sleep(5)
 
-time.sleep(5)
+    phone_input = driver.find_element(By.XPATH, '//*[@id="txtMobile"]')
+    name_input = driver.find_element(By.XPATH, '//*[@id="txtName"]')
+    dob_input_date = driver.find_element(By.XPATH, '//*[@id="ddDate"]')
+    dob_input_month = driver.find_element(By.XPATH, '//*[@id="ddMonth"]')
+    dob_input_year = driver.find_element(By.XPATH, '//*[@id="ddYear"]')
+    submit_button = driver.find_element(By.XPATH, '//*[@id="btnSearch"]')
 
-phone_input = driver.find_element(By.XPATH, '//*[@id="txtMobile"]')
-name_input = driver.find_element(By.XPATH, '//*[@id="txtName"]')
-dob_input_date = driver.find_element(By.XPATH, '//*[@id="ddDate"]')
-dob_input_month = driver.find_element(By.XPATH, '//*[@id="ddMonth"]')
-dob_input_year = driver.find_element(By.XPATH, '//*[@id="ddYear"]')
-submit_button = driver.find_element(By.XPATH, '//*[@id="btnSearch"]')
+    phone_input.send_keys(phone_no)
+    name_input.send_keys(first_letter_name)
+    dob_input_date.send_keys(dob_date)
+    dob_input_month.send_keys(dob_month)
+    dob_input_year.send_keys(dob_year)
+    submit_button.click()
 
-phone_input.send_keys(phone_no)
-name_input.send_keys(first_letter_name)
-dob_input_date.send_keys(dob_date)
-dob_input_month.send_keys(dob_month)
-dob_input_year.send_keys(dob_year)
-submit_button.click()
+    time.sleep(5)
 
-time.sleep(5)
+    result = driver.find_element(By.XPATH, '//*[@id="divResult"]/h4').text
+    print(result)
 
-result = driver.find_element(By.XPATH, '//*[@id="divResult"]/h4').text
-driver.quit()
-
-print(result)
+finally:
+    driver.quit()
