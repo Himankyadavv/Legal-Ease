@@ -37,7 +37,7 @@ function Signup() {
 
     try {
       // Send signup request to the backend API
-      const response = await axios.post("http://localhost:3000/api/signup", formData);
+      const response = await axios.post("http://localhost:3002/api/signup", formData);
 
       if (response.data.msg === 'User registered successfully') {
         setSuccess("Signup successful! Redirecting to messages...");

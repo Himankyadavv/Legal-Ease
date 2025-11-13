@@ -17,11 +17,12 @@ function Messages() {
 
   useEffect(() => {
     const storeName = localStorage.getItem("userName");
+    console.log(storeName)
     setUserName(storeName || "guest");
 
     const fetchCurrentUser = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/api/${storeName}`);
+        const response = await axios.get(`http://localhost:3002/api/${storeName}`);
         setCurrentUser(response.data);
       } catch (error) {
         console.error("Error fetching current user:", error);
@@ -166,7 +167,7 @@ function ChatsContainer({ onSelectUser, currentUser }) {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/api/users/${username}`);
+        const response = await axios.get(`http://localhost:3002/api/users/${username}`);
         setUsers(response.data);
       } catch (error) {
         console.error("Error fetching users:", error);

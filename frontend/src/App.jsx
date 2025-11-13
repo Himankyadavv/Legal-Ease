@@ -8,11 +8,11 @@ import Home from './Home/Home';
 import Formpage from './formpage/Formpage';
 import MultipleProfile from './MultipleProfile/MultipleProfile';
 import ProfileShowing from './ProfileShowing/ProfileShowing';
-import Verify from './formpage/verify';
+import Verify from './formpage/Verify';
 
 function App() {
   return (
-    <Router> {/* Wrap your routes inside BrowserRouter */}
+    <Router> 
       <Routes>
         <Route path="/" element={<Home />}/>
         <Route path="/signin" element={<Signin />}/>
@@ -23,7 +23,6 @@ function App() {
         <Route path="/MultipleProfile" element = {<MultipleProfile />}></Route>
         <Route path="/profile/:id" element={<ProfileShowing />} />
         <Route path="/Verify" element={<Verify></Verify>} />
-        {/* You can add other routes like Signin if needed */}
         
       </Routes>
     </Router>
