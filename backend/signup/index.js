@@ -16,7 +16,13 @@ const UserSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   passwordHash: { type: String, required: true },
   createdAt: { type: Date, default: Date.now },
+  username: { type: String } 
 });
+
+UserSchema.index(
+  { username: 1 },
+  { unique: true, partialFilterExpression: { username: { $exists: true, $ne: null } } }
+);
 
 const User = mongoose.model('User', UserSchema);
 
